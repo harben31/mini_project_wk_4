@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Guess a word</title>
+</head>
+<body>
+    <header>
+        <h1>Guess The Word</h1>
+        <h2>Time Left:<span id="time"><span></h2>
+        <ul id="scoreCard">
+            <li>Wins:<span id="wins"></span></li>
+            <li>Losses: <span id="losses"></span></li>
+        </ul>
+    </header>
+    <main>
+            
+            <div id="wordWrapper">
+                <p>What could this word be?!</p>
+                <p id="wordGoesHere"></p>
+                <div id="inputWrapper">
+                    <p>Just type it out bro</p>
+                    <br><br>
+                    <h4>you guessed these letters and they were correct</h4>
+                    <p id="correctLetters"></p>
+                </div>
+            </div>
+            <aside>
+                <h4>These words you guessed and when you guessed those words you were wrong!</h4>
+                <p id="lettersGuessed"></p>
+            </aside>
+            
+        </main>
+        <div id="buttonWrapper">
+            <button id="startButton">Start</button>
+        </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
