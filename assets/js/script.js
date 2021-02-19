@@ -22,6 +22,7 @@ function wordGenerator(){
     i=  Math.floor(Math.random() * wordArray.length);
     return wordArray[i]
 }
+
  var wordToGuess = wordGenerator();
  
  //start button & countdown timer
@@ -39,6 +40,9 @@ function wordGenerator(){
         wordGenerator();
         console.log(wordToGuess);
         // word.textContent = wordToGuess;
+        for(i=0; i<wordToGuess.length; i++){
+            word.innerHTML += "_ ";  
+        }
        
 });
 
@@ -53,20 +57,24 @@ function keyMatcher(event){
         if(letterMatch === wordToGuess.charAt(i)){
             var matchedLetter = wordToGuess.charAt(i);
             correctGuesses.textContent += matchedLetter; 
-            console.log(wordToGuess.charAt(i));
-            word.textContent = wordToGuess.charAt(i);
+            console.log(matchedLetter);
+            // word[i] = matchedLetter;
+            
+            
         } else {
             // wordToGuess.replace(wordToGuess.charAt(i), "_ ");
         }
     };
 
+console.log(word);
+console.log(typeof(word.innerHTML));
+
     if(letterMatch !== wordToGuess.charAt(i)) {
         incorrectGuesses.textContent += letterMatch;
         console.log(wordToGuess.charAt(i));
     };
-    //i need to 1 take apart wordToMatch 2 compare letterMatch to each of those and 3 if they match print them somewhere
+    //i need to 1 take apart wordToMatch to compare letterMatch to each of those and 3 if they match print them somewhere
 }
-
 document.addEventListener("keydown", keyMatcher)
 
 //DONE
@@ -81,3 +89,12 @@ document.addEventListener("keydown", keyMatcher)
 // TODO
 //when letters are guessed correctly put them in the coralating spot in the underscore string
 //bonus: create RNG that wont repeat
+
+
+//WHEN wordToGuess is generated
+//THEN it is split into individual charactors
+// WHEN wordToGuess is spit 
+//THEN each charactor is given a new span element with a numerical data- attribute (iterater)
+//WHEN each charactor has its own span element
+//THEN each span is hidden behind an _ 
+//WHEN a matching key is struck the apropriate 
