@@ -61,38 +61,29 @@ function wordGenerator(){
 function keyMatcher(event){
     var letterClass = document.querySelectorAll(".letters");
     var letterMatch = event.key;
-    var letterData = letterLi.getAttribute("data-letter");
-    console.log(letterData);
-    
-    //  if(letterData===letterMatch){
-    //     console.log("screaming silently");
-    // }
 
+    for(i=0; i<wordToGuess.length; i++){
+        var letterData = letterClass[i].getAttribute("data-letter");
+        console.log(letterData);
 
-    // if(event.key===letterLi.dataset.letter){
-    // console.log(event.key);
-    // }
-    // var letterMatch = event.key;
-    // console.log(letterMatch);
-    
-    
-
-
+        if (letterData===letterMatch){
+            console.log(letterLi.innerHTML);
+            letterLi.innerHTML = letterClass[i].getAttribute("data-letter");
+        } 
+    }
    
+    
+    
 
     //when a letter is guessed right this happens
     
 
-    // for(i=0; i<wordToGuess.length; i++){
-        
-        // }
-
 console.log(word);
 
-    if(letterMatch !== wordToGuess.charAt(i)) {
-        incorrectGuesses.textContent += letterMatch;
-        console.log(wordToGuess.charAt(i));
-    };
+    // if(letterMatch !== wordToGuess.charAt(i)) {
+    //     incorrectGuesses.textContent += letterMatch;
+    //     console.log(wordToGuess.charAt(i));
+    // };
     //i need to 1 take apart wordToMatch to compare letterMatch to each of those and 3 if they match print them somewhere
 }
 document.addEventListener("keydown", keyMatcher)
