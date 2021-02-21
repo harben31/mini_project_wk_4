@@ -14,16 +14,32 @@ var aside = document.querySelector("aside");
 var correctLetterString = "";
 var incorrectLetterString = "";
 
+var letterLi;
+var letterToBlank;
+
 var countDown = 3;
 
-var wordArray = ["house", "mouse", "horse", "force", "Porsch", "borscht"];
+var wordArray = ["house", "fiction", "building", "bromide", "kalamata", "borscht"];
 
 function wordGenerator(){
     i=  Math.floor(Math.random() * wordArray.length);
-    return wordArray[i]
+    return wordArray[i];
 }
 
  var wordToGuess = wordGenerator();
+
+ function wordBuild(){
+     for(i=0; i<wordToGuess.length; i++){
+         
+         letterLi =  document.createElement("span");
+         letterToBlank = wordToGuess[i];
+         document.body.children[1].children[0].children[1].appendChild(letterLi);
+         letterLi.setAttribute("data-letter", letterToBlank);
+         letterLi.setAttribute("data-visible", "hidden");
+         letterLi.setAttribute("class", "letters");
+         letterLi.textContent = "_ ";
+     }
+ }
  
  //start button & countdown timer
  startButton.addEventListener("click", function(){
@@ -38,36 +54,40 @@ function wordGenerator(){
             }
         },1000)
         wordGenerator();
+        wordBuild();
         console.log(wordToGuess);
-        // word.textContent = wordToGuess;
-        for(i=0; i<wordToGuess.length; i++){
-            word.innerHTML += "_ ";  
-        }
-       
 });
 
 function keyMatcher(event){
+    var letterClass = document.querySelectorAll(".letters");
     var letterMatch = event.key;
-    console.log(letterMatch);
-    // var wordExplode = wordToGuess.split("");
+    var letterData = letterLi.getAttribute("data-letter");
+    console.log(letterData);
+    
+    //  if(letterData===letterMatch){
+    //     console.log("screaming silently");
+    // }
+
+
+    // if(event.key===letterLi.dataset.letter){
+    // console.log(event.key);
+    // }
+    // var letterMatch = event.key;
+    // console.log(letterMatch);
+    
     
 
+
+   
+
     //when a letter is guessed right this happens
-    for(i=0; i<wordToGuess.length; i++){
-        if(letterMatch === wordToGuess.charAt(i)){
-            var matchedLetter = wordToGuess.charAt(i);
-            correctGuesses.textContent += matchedLetter; 
-            console.log(matchedLetter);
-            // word[i] = matchedLetter;
-            
-            
-        } else {
-            // wordToGuess.replace(wordToGuess.charAt(i), "_ ");
-        }
-    };
+    
+
+    // for(i=0; i<wordToGuess.length; i++){
+        
+        // }
 
 console.log(word);
-console.log(typeof(word.innerHTML));
 
     if(letterMatch !== wordToGuess.charAt(i)) {
         incorrectGuesses.textContent += letterMatch;
